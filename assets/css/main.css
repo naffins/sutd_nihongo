@@ -2089,6 +2089,19 @@ button,
     color: inherit;
     font-family: "Roboto Slab", serif;
     font-size: 1.125em; }
+  #header .logo_img {
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: -ms-flex;
+    -moz-object-fit: cover;
+    -webkit-object-fit: cover;
+    -ms-object-fit: cover;
+    object-fit: cover;
+    -moz-object-position: left;
+    -webkit-object-position: left;
+    -ms-object-position: left;
+    object-position: left;
+    }
   #header .icons {
     text-align: right; }
   @media screen and (max-width: 1680px) {
