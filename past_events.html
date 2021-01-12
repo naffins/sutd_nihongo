@@ -78,6 +78,9 @@ title: "Past Events"
                 document.getElementById("year_"+currentYear).style = "";
                 document.getElementById("year_"+currentYear).className = "button";
             }
+            else {
+                document.getElementById("months_select").innerHTML = "Select month:";
+            }
             document.getElementById("year_"+year).style = "cursor: auto;";
             document.getElementById("year_"+year).className = "button primary";
             currentYear = year;
@@ -163,7 +166,7 @@ title: "Past Events"
 			</ul>
 		</div>
 		<div class="col-6 col-12-small">
-            <h4>Select month:</h4>
+            <h4 id="months_select"></h4>
 			<ul id="months" class="actions stacked">
 			</ul>
 	    </div>
