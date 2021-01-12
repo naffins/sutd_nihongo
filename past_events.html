@@ -1,125 +1,171 @@
-<!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>SUTD NihonGo! - Past Events</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+---
+title: "Past Events"
+---
+<section>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+    <header class="main">
+        <h1>Past Events</h1>
+    </header>
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
+    <h4>On this page, we showcase some of the past activities that we have done. Do click on the relevant buttons to read more on each activity!</h4>
 
-							<!-- Header -->
-							<header id="header">
-								<a href="index.html" class="logo_img" style="border-bottom: 0px;">	
-									<img src="images/logo.png" alt="SUTD NihonGo!" style="width: 200px;" />
-								</a>
-							</header>
-							
-							<!-- Main body-->
+    <script>
+        const monthDict = {"01": "January", "02": "February", "03": "March",
+                            "04": "April", "05": "May", "06": "June",
+                            "07": "July", "08": "August", "09": "September",
+                            "10": "October", "11": "November", "12": "December"};
 
-							<section>
-								<header class="main">
-									<h1>Past Events</h1>
-								</header>
+        var data = [];
+        {% for event in site.events %}
+            data.push({"name": "{{ event.title }}",
+                "start_date": ["{{ event.start_year }}","{{ event.start_month }}","{{ event.start_day }}"],
+                "end_date": ["{{ event.end_year }}","{{ event.end_month }}","{{ event.end_day }}"],
+                "description": "{{ event.description }}",
+                "cover_image":
+                    {% if event.cover_image %}
+                        {% assign img = site.data.images | find: "name", event.cover_image %}
+                        "{{ img.img }}"
+                    {% else %}
+                        {% assign img = site.data.images | find: "name", "placeholder01.jpg" %}
+                        "{{ img.img }}"
+                    {% endif %},
+                "link": "{{ event.url }}"
+            });
+        {% endfor %}
+        var years = {};
+        for (var i=0;i<data.length;i++){
+            years[data[i]["start_date"][0]] = true;
+        }
+        years = Object.keys(years);
+        years.sort();
+        var dataSorted = {};
+        for (var i=0;i<years.length;i++){
+            var dataNested = {};
+            var monthsTemp = {};
+            for (var j=0;j<data.length;j++){
+                if (data[j]["start_date"][0]!=years[i]) continue;
+                monthsTemp[data[j]["start_date"][1]] = true;
+                if (!(data[j]["start_date"][1] in dataNested)) dataNested[data[j]["start_date"][1]] = [data[j]];
+                else dataNested[data[j]["start_date"][1]].push(data[j]);
+            }
+            dataNested["months"] = Object.keys(monthsTemp).sort();
+            for (var j=0;j<dataNested["months"].length;j++){
+                dataNested[dataNested["months"][j]].sort(function(a, b){
+                    if (a["start_date"][0] < b["start_date"][0]) {return -1;}
+                    if (a["start_date"][0] > b["start_date"][0]) {return 1;}
+                    return 0;
+                });
+            }
+            dataSorted[years[i]] = dataNested;
+        }
 
-								<h4>On this page, we showcase some of the past activities that we have done. Do click on the relevant buttons to read more on each activity!</h4>
-							</section>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            for (var i=0;i<years.length;i++){
+                document.getElementById("years").innerHTML += "<li><a href=\"#\" class=\"button\" id=\"year_" + years[i]
+                + "\" onclick=\"selectYear(" + years[i]  + ")\" style=\"\">" + years[i] + "</a></li>" ;
+            }
+        });
 
-							<section id="banner">
-								<div class="content">
-									<header class="major">
-										<h2>All Things Japan-nice Exhibition</h2>
-										<h3>20-22 October 2019</h3>
-									</header>
-									<p>Insert description here.
-									</p>
-									<ul class="actions">
-										<li><a href="past_events/20191020.html" class="button big">Read More</a></li>
-									</ul>
-								</div>
-								<span class="image object">
-									<img src="images/pic03.jpg" alt="" />
-								</span>
-							</section>
+        var currentYear = null;
+        var currentMonth = null;
 
-							<section id="banner">
-								<div class="content">
-									<header class="major">
-										<h2>Cultural Games Night</h2>
-										<h3>Insert date here</h3>
-									</header>
-									<p>Insert description here
-									</p>
-									<ul class="actions">
-										<li><a href="#" class="button big">Read More</a></li>
-									</ul>
-								</div>
-								<span class="image object">
-									<img src="images/pic03.jpg" alt="" />
-								</span>
-							</section>
+        function selectYear(year){
+            year = year+"";
+            if (currentYear==year) return;
+            if (currentYear!=null) {
+                document.getElementById("year_"+currentYear).style = "";
+                document.getElementById("year_"+currentYear).className = "button";
+            }
+            document.getElementById("year_"+year).style = "cursor: auto;";
+            document.getElementById("year_"+year).className = "button primary";
+            currentYear = year;
 
-						</div>
-					</div>
+            document.getElementById("months").innerHTML = "";
+            currentMonth = null;
+            loadMonths(year);
 
-				<!-- Sidebar -->
-					<div id="sidebar">
-						<div class="inner">
+            document.getElementById("events").innerHTML = "";
+        }
 
-							<!-- Menu -->
-								<nav id="menu">
-									<header class="major">
-										<h2>Menu</h2>
-									</header>
-									<ul>
-										<li><a href="index.html">Homepage</a></li>
-										<li><a href="about_us.html">About Us</a></li>
-										<li><a href="past_events.html">Past Events</a></li>
-									</ul>
-								</nav>
+        function loadMonths(year){
+            for (var i=0;i<dataSorted[year]["months"].length;i++){
+                document.getElementById("months").innerHTML += "<li><a href=\"#\" class=\"button\" id=\"month_" + dataSorted[year]["months"][i]
+                + "\" onclick=\"selectMonth(" + dataSorted[year]["months"][i]  + ")\" style=\"\">" + monthDict[dataSorted[year]["months"][i]] + "</a></li>" ;
+            }
+        }
 
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Get in touch</h2>
-									</header>
-									<p>Whether it is to join our club activities, organise a collaboration with us or otherwise, do feel free to drop us a message!</p>
-									<ul class="contact">
-										<li class="icon solid fa-envelope"><a href="mailto:nihongo@club.sutd.edu.sg" style="border-bottom: 0px;">nihongo@club.sutd.edu.sg</a></li>
-										<li class="icon solid brands fa-instagram"><a href="https://www.instagram.com/sutd.nihongo/" target="_blank" style="border-bottom: 0px;">@sutd.nihongo</a></li>
-										<li class="icon solid fa-home">Singapore Technology of University and Design<br />
-											8 Somapah Rd, Singapore 487372</li>
-									</ul>
-								</section>
+        function selectMonth(month){
+            month=month+"";
+            if (month.length==1) month = "0"+month;
+            if (currentMonth==month) return;
+            if (currentMonth!=null){
+                document.getElementById("month_"+currentMonth).style = "";
+                document.getElementById("month_"+currentMonth).className = "button";
+            }
+            document.getElementById("month_"+month).style = "cursor: auto;";
+            document.getElementById("month_"+month).className = "button primary";
+            currentMonth = month;
 
-							<!-- Footer -->
-								<footer id="footer">
-									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-								</footer>
+            document.getElementById("events").innerHTML = "";
+            loadMonth(currentYear,month);
+        }
 
-						</div>
-					</div>
+        function formatDate(obj){
+            if (obj["start_date"][0]==obj["end_date"][0]){
+                if (obj["start_date"][1]==obj["end_date"][1]){
+                    if (obj["start_date"][2]==obj["end_date"][2]){
+                        return obj["start_date"][2] + " " + monthDict[obj["start_date"][1]] + " " + obj["start_date"][0];
+                    }
+                    else return obj["start_date"][2] + " - "
+                + obj["end_date"][2] + " " + monthDict[obj["end_date"][1]] + " " + obj["end_date"][0];
+                }
+                else return obj["start_date"][2] + " " + monthDict[obj["start_date"][1]] + " - "
+                + obj["end_date"][2] + " " + monthDict[obj["end_date"][1]] + " " + obj["end_date"][0];
+            }
+            else return obj["start_date"][2] + " " + monthDict[obj["start_date"][1]] + " " + obj["start_date"][0] + " - "
+                + obj["end_date"][2] + " " + monthDict[obj["end_date"][1]] + " " + obj["end_date"][0];
+        }
+        
+        function loadMonth(year,month){
+            for (var i=0;i<dataSorted[year][month].length;i++){
+                document.getElementById("events").innerHTML += "<section id=\"banner\">"
+						+ "<div class=\"content\">"
+							+ "<header class=\"major\">"
+							    + "<h2>" + dataSorted[year][month][i]["name"] + "</h2>"
+							    + "<h3>" + formatDate(dataSorted[year][month][i]) + "</h3>"
+							+ "</header>"
+							+ "<p>" + dataSorted[year][month][i]["description"] + "</p>"
+							+ "<ul class=\"actions\">"
+							+ "<li><a href=\"" + dataSorted[year][month][i]["link"] + "\" class=\"button big\">Read More</a></li>"
+							+ "</ul>"
+						+ "</div>"
+						+ "<span class=\"image object\">"
+						    + "<img src=\"" + dataSorted[year][month][i]["cover_image"] + "\" alt=\"\" />"
+						+ "</span>"
+					+ "</section>";
+            }
+        }
 
-			</div>
+        
+    </script>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
 
-	</body>
-</html>
+</section>
+
+<section>
+    <div class="row">
+		<div class="col-6 col-12-small">
+            <h4>Select year:</h4>
+			<ul id="years" class="actions stacked">
+			</ul>
+		</div>
+		<div class="col-6 col-12-small">
+            <h4>Select month:</h4>
+			<ul id="months" class="actions stacked">
+			</ul>
+	    </div>
+    </div>
+</section>
+
+<section id="events">
+</section>

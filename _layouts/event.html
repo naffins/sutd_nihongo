@@ -1,0 +1,22 @@
+---
+layout: default
+---
+{% assign past_events = site.data.global_defaults | find: "name", "Past events" %}
+
+{% assign start_month = site.data.constants.months | find: "number", page.start_month %}
+{% assign end_month = site.data.constants.months | find: "number", page.end_month %}
+
+<section>
+    <header class="main">
+        <h2>{{page.title}}</h2>
+    </header>
+    <header class="major">
+        <h3>
+            {% include date_formatting.html start_day=page.start_day start_month=page.start_month start_year=page.start_year end_day=page.end_day end_month=page.end_month end_year=page.end_year %}
+        </h3>
+    </header>
+    {{ content }}
+    <ul class="actions">
+        <li><a href={{ past_events.link }} class="button big">Back to List of Past Events</a></li>
+    </ul>
+</section>

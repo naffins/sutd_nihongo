@@ -1,0 +1,41 @@
+{% assign img_array = include.img_name_list | split: ", " %}
+{% assign grid_id = 0 %}
+
+<span id="img_grid_display" class="image fit">
+    {% assign img_temp=img_array[0] %}
+    {% include img_src.html img_name=img_temp %}
+</span>
+
+<div class="box alt">
+    <div class="row gtr-50 gtr-uniform">
+        <script>
+            var currentGridId = 0;
+            function switchGridId(gridId){
+                if (currentGridId==gridId) return;
+
+                document.getElementById("img_grid_"+gridId).style = "cursor: auto;";
+                document.getElementById("img_grid_"+currentGridId).style = "cursor: pointer;";
+
+                currentGridId = gridId;
+
+                document.getElementById("img_grid_display").children[0].src = document.getElementById("img_grid_"+currentGridId).children[0].src;
+                
+            }
+        </script>
+        {% for img_name in img_array %}
+            <div class="col-2">
+                <span id={{ "img_grid_" | append: grid_id }} class="image fit"
+                    {% if grid_id==0 %}
+                        style="cursor: auto;"
+                    {% else %}
+                        style="cursor: pointer;"
+                    {% endif %} 
+                    onclick="switchGridId({{ grid_id }});";
+                >             
+                    {% include img_src.html img_name=img_name %}
+                </span>
+            </div>
+            {% assign grid_id = grid_id | plus: 1 %}
+        {% endfor %}
+    </div>
+</div>
