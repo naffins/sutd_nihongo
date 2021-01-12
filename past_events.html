@@ -18,8 +18,8 @@ title: "Past Events"
         var data = [];
         {% for event in site.events %}
             data.push({"name": "{{ event.title }}",
-                "start_date": ["{{ event.start_year }}","{{ event.start_month }}","{{ event.start_day }}"],
-                "end_date": ["{{ event.end_year }}","{{ event.end_month }}","{{ event.end_day }}"],
+                "start_date": ["{{ event.start_year }}","{{ event.start_month }}".length==1? "0{{ event.start_month }}":"{{ event.start_month }}","{{ event.start_day }}".length==1? "0{{ event.start_day }}":"{{ event.start_day }}"],
+                "end_date": ["{{ event.end_year }}","{{ event.end_month }}".length==1? "0{{ event.end_month }}":"{{ event.end_month }}","{{ event.end_day }}".length==1? "0{{ event.end_day }}":"{{ event.end_day }}"],
                 "description": "{{ event.description }}",
                 "cover_image":
                     {% if event.cover_image %}
@@ -91,8 +91,9 @@ title: "Past Events"
 
         function loadMonths(year){
             for (var i=0;i<dataSorted[year]["months"].length;i++){
-                document.getElementById("months").innerHTML += "<li><a href=\"#\" class=\"button\" id=\"month_" + dataSorted[year]["months"][i]
-                + "\" onclick=\"selectMonth(" + dataSorted[year]["months"][i]  + ")\" style=\"\">" + monthDict[dataSorted[year]["months"][i]] + "</a></li>" ;
+                var month = dataSorted[year]["months"][i].length==1? "0" + dataSorted[year]["months"][i]: dataSorted[year]["months"][i];
+                document.getElementById("months").innerHTML += "<li><a href=\"#\" class=\"button\" id=\"month_" + month
+                + "\" onclick=\"selectMonth(" + month  + ")\" style=\"\">" + monthDict[month] + "</a></li>" ;
             }
         }
 
