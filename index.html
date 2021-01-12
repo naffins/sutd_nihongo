@@ -1,9 +1,12 @@
 ---
 title: "Homepage"
 ---
-{% assign about_us = site.data.global_defaults | find: "name", "About us" %}
-{% assign email = site.data.global_defaults | find: "name", "Email" %}
-{% assign instagram = site.data.global_defaults | find: "name", "Instagram" %}
+{% assign about_us = site.data.global_defaults | where: "name", "About us" %}
+{% assign about_us = about_us[0] %}
+{% assign email = site.data.global_defaults | where: "name", "Email" %}
+{% assign email = email[0] %}
+{% assign instagram = site.data.global_defaults | where: "name", "Instagram" %}
+{% assign instagram = instagram[0] %}
 
 <!-- Banner -->
 <section id="banner">
