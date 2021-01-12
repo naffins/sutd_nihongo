@@ -1,0 +1,34 @@
+---
+id: "20191122-2"
+title: "Test"
+
+start_day: 22
+start_month: 11
+start_year: 2019
+end_day: 23
+end_month: 11
+end_year: 2019
+description: help me
+cover_image: 2021_01_08_club_photo.jpg
+---
+
+{% assign img_name_list="2021_01_08_club_photo.jpg, 2021_01_08_omamori_workshop.jpg, 2021_01_08_club_photo.jpg" |
+append: ", 2021_01_08_omamori_workshop.jpg, 2021_01_08_omamori_workshop.jpg, 2021_01_08_omamori_workshop.jpg" %}
+{% include img_grid.html img_name_list=img_name_list %}
+
+<p>
+{% include img_flex.html img_pos="left" img_name="2021_01_08_club_photo.jpg" %}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in enim convallis, egestas dolor vel, cursus odio. Nunc consectetur pharetra ultrices. Aenean scelerisque mollis tellus in euismod. Curabitur facilisis nisi non blandit commodo. Vestibulum et tincidunt orci. Quisque non ipsum sed lectus lacinia suscipit in eget lorem. Vivamus at orci interdum, congue arcu vitae, elementum sapien. In turpis metus, porttitor eget urna eu, venenatis ornare nisi. Sed congue molestie eros a vulputate. Ut lacinia eu metus sit amet ultrices. Quisque ac varius lorem.
+</p><p>
+Morbi sem metus, egestas a mauris vel, bibendum elementum lorem. Curabitur eget augue velit. Aliquam sagittis orci non nulla mattis, eu placerat neque varius. Integer suscipit et metus eget maximus. Sed dapibus eu lacus quis lobortis. Curabitur faucibus ultrices mi malesuada porttitor. Nam commodo tellus eget lectus suscipit, ac rhoncus magna tempor. Sed condimentum ut lectus vitae auctor. Cras id magna nec nisl finibus maximus nec vel elit. Aliquam laoreet lacus sit amet leo volutpat, mattis ultrices elit varius.
+</p><p>
+	{% include img_flex.html img_pos="right" img_name="2021_01_08_omamori_workshop.jpg" %}	
+Sed lectus magna, efficitur et varius pulvinar, vulputate at elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse vestibulum cursus lectus ut placerat. Integer id tempor enim, nec maximus nibh. Vivamus scelerisque a orci eget consectetur. Curabitur aliquet neque a diam pellentesque, at rutrum felis maximus. Ut luctus consectetur mauris, in condimentum nibh porta non. Nullam cursus ipsum sapien, posuere ultricies lectus suscipit vel. Vivamus bibendum maximus libero nec luctus. Fusce pulvinar mauris et pharetra ullamcorper. Duis vitae purus ut augue aliquam ultricies. Mauris eget orci in ante tempus dignissim ac ornare magna.
+</p><p>
+Ut volutpat lorem ut tellus cursus, ut vestibulum massa scelerisque. Pellentesque id dui leo. Sed malesuada orci volutpat, gravida risus non, posuere nisi. Sed odio ex, egestas vel fermentum vitae, interdum ornare ligula. Pellentesque feugiat vestibulum rhoncus. Vivamus lobortis volutpat arcu. Suspendisse sit amet urna dapibus, ornare erat in, iaculis erat.
+</p><p>
+Suspendisse feugiat sem eu dapibus consectetur. Fusce mattis id ante quis fringilla. Sed iaculis quam et nisl sagittis aliquet. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus posuere ligula luctus nibh fermentum posuere. Quisque malesuada libero ligula, tristique auctor velit feugiat in. Nunc vitae scelerisque augue. Donec ut rutrum mauris. Nullam pretium mauris a augue tincidunt, euismod mattis sem finibus. Cras eget elit sed magna tempor fermentum eget sed nunc. Nunc ornare, eros sed ultrices volutpat, nisi nisl efficitur metus, ac viverra quam metus a turpis. Etiam ornare ac neque ut imperdiet.
+</p>
+
+{% include img_flex.html img_pos="fit" img_name="2021_01_08_club_photo.jpg" %}
+

@@ -1,0 +1,14 @@
+collections:
+  events:
+    output: true
+
+defaults:
+- scope:
+    path: ""
+    type: "events"
+  values:
+    layout: "event"
+- scope:
+    path: ""
+  values:
+    layout: "default"

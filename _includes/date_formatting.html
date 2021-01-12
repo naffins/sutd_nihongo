@@ -1,0 +1,18 @@
+{% assign start_month = site.data.constants.months | find: "number", include.start_month %}
+{% assign end_month = site.data.constants.months | find: "number", include.end_month %}
+
+{% if include.start_year==include.end_year %}
+    {% if include.start_month==include.end_month %}
+        {% if include.start_day==include.end_day %}
+            {{ include.start_day }} 
+        {% else %}
+            {{ include.start_day }} - {{ include.end_day }} 
+        {% endif %}
+            {{ start_month.name }} 
+    {% else %}
+        {{ include.start_day }} {{ start_month.name }} - {{ include.end_day }} {{ end_month.name }}  
+    {% endif %}
+    {{ include.start_year }}
+{% else %}
+    {{ include.start_day }} {{ start_month.name }} {{ include.start_year }} - {{ include.end_day }} {{ end_month.name }} {{ include.end_year }}
+{% endif %}

@@ -1,0 +1,84 @@
+---
+---
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>SUTD NihonGo! - {{ page.title }}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		{% assign homepage = site.data.global_defaults | find: "name", "Homepage" %}
+		{% assign about_us = site.data.global_defaults | find: "name", "About us" %}
+		{% assign past_events = site.data.global_defaults | find: "name", "Past events" %}
+		{% assign email = site.data.global_defaults | find: "name", "Email" %}
+		{% assign instagram = site.data.global_defaults | find: "name", "Instagram" %}
+		{% assign logo = site.data.global_defaults | find: "name", "Logo" %}
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href={{ homepage.link }} class="logo_img" style="border-bottom: 0px;">	
+										<img src={{ logo.img }} alt="SUTD NihonGo!" style="width: 200px;" />
+									</a>
+								</header>
+
+								{{ content }}
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						
+						<div class="inner">
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href={{ homepage.link }}>Homepage</a></li>
+										<li><a href={{ about_us.link }}>About Us</a></li>
+										<li><a href={{ past_events.link }}>Past Events</a></li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Get in touch</h2>
+									</header>
+									<p>Whether it is to join our club activities, organise a collaboration with us or otherwise, do feel free to drop us a message!</p>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href={{ email.link }} style="border-bottom: 0px;">{{ email.email }}</a></li>
+										<li class="icon solid brands fa-instagram"><a href={{ instagram.link }} target="_blank" style="border-bottom: 0px;">{{ instagram.id }}</a></li>
+										<li class="icon solid fa-home">Singapore Technology of University and Design<br />8 Somapah Rd, Singapore 487372</li>
+									</ul>
+								</section>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/browser.min.js"></script>
+			<script src="/assets/js/breakpoints.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+			<script src="/assets/js/main.js"></script>
+
+	</body>
+	
+</html>

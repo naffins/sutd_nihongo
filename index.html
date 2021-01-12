@@ -1,234 +1,100 @@
-<!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>SUTD NihonGo! - Homepage</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+---
+title: "Homepage"
+---
+{% assign about_us = site.data.global_defaults | find: "name", "About us" %}
+{% assign email = site.data.global_defaults | find: "name", "Email" %}
+{% assign instagram = site.data.global_defaults | find: "name", "Instagram" %}
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+<!-- Banner -->
+<section id="banner">
+    <div class="content">
+        <header class="major">
+            <h2>About SUTD NihonGo!</h2>
+        </header>
+        <p>SUTD NihonGo is SUTD's Japanese cultural club. Our regular club activities are mainly weekly cultural sessions where our members share about various aspects of Japan culture.
+            Every year, we also conduct activities aimed at fellow SUTDents such as workshops and our annual exhibition at SUTD's Campus Centre. Besides these, we also maintain relations between SUTD and other Japanese colleges and schools through activities such as exchanges and tours.
+        </p>
+        <ul class="actions">
+            <li><a href={{ about_us.link }} class="button big">About Us</a></li>
+        </ul>
+    </div>
+    <span class="image object">
+        {% include img_src.html img_name="2021_01_08_club_photo.jpg" %}
+    </span>
+</section>
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
+<!-- Section -->
+<section>
+    <header class="major">
+        <h2>Examples of weekly cultural session topics</h2>
+        <!--(TODO: Icons, fix spacings, Insta embeds)-->
+    </header>
+    <div class="features">
+        <article>
+            <span class="icon solid fa-utensils"></span>
+            <div class="content">
+                <h3><a href="#" style="border-bottom: 0px;">Japanese food</a></h3>
+                <p>Our club provides avenues to explore Japanese cooking freely. One of our recent discoveries was the idea to add lotus root to Japanese curry.</p>
+            </div>
+        </article>
+        <article>
+            <span class="icon solid fa-paint-brush"></span>
+            <div class="content">
+                <h3><a href="#" style="border-bottom: 0px;">Art and craft</a></h3>
+                <p>Some of our topics included origami, felt doll crafting and caligraphy.</p>
+            </div>
+        </article>
+        <article>
+            <span class="icon solid fa-chess-pawn"></span>
+            <div class="content">
+                <h3><a href="#" style="border-bottom: 0px;">Games</a></h3>
+                <p>Some of our sessions cover traditional games like kendama, hanafuda and shogi. (Though some of us do like mobile games like FGO and Bandori and discuss them too!)</p>
+            </div>
+        </article>
+        <article>
+            <span class="icon solid fa-subway"></span>
+            <div class="content">
+                <h3><a href="#" style="border-bottom: 0px;">Trains</a></h3>
+                <p>Yes, <u>trains</u>. Train station naming conventions, train models, Tokyo's Shinjuku Station, random YouTube music videos to help you memorise station names and pretty much anything else to do with Japan's train networks.</p>
+            </div>
+        </article>
+    </div>
+    <br>
+    <h4>Check out <a href= {{ instagram.link }} target="_blank" style="border-bottom: dotted 1px;">our Instagram page</a> for some photos of our weekly sessions in action!</h4>
+</section>
 
-							<!-- Header -->
-								<header id="header">
-									<a href="index.html" class="logo_img" style="border-bottom: 0px;">	
-										<img src="images/logo.png" alt="SUTD NihonGo!" style="width: 200px;" />
-									</a>
-								</header>
+<!-- Section -->
+<section>
+    <header class="major">
+        <h2>Highlighted past events</h2>
+    </header>
+    <div class="posts">
+        {% include event_highlight.html event="20191120" %}
+        {% include event_highlight.html event="20191020" %}
+    </div>
+</section>
 
-							<!-- Banner -->
-								<section id="banner">
-									<div class="content">
-										<header class="major">
-											<h2>About SUTD NihonGo!</h2>
-										</header>
-										<p>SUTD NihonGo is SUTD's Japanese cultural club. Our regular club activities are mainly weekly cultural sessions where our members share about various aspects of Japan culture.
-											Every year, we also conduct activities aimed at fellow SUTDents such as workshops and our annual exhibition at SUTD's Campus Centre. Besides these, we also maintain relations between SUTD and other Japanese colleges and schools through activities such as exchanges and tours.
-										</p>
-										<ul class="actions">
-											<li><a href="about_us.html" class="button big">About Us</a></li>
-										</ul>
-									</div>
-									<span class="image object">
-										<img src="images/club_photo.jpg" alt="" />
-									</span>
-								</section>
+<section id="banner">
+    <div class="content">
+        <header class="major">
+            <h2>Reach out to us!</h2>
+        </header>
+        <p>Looking to join us as a new member? We welcome members from all years, whether you are an undergraduate, postgraduate or alumni.<br><br>
+            Or are you perhaps looking to collaborate with us? Each year we work together with fellow SUTD 5th Rows such as SUTD MVMC and SUTD Gunpla Club to bring about some of our school-wide events.
+            We also collaborate with organisations outside SUTD, such as overseas schools, to host events including student exchanges.<br><br>
+            Feel free to contact us on either:
+        </p>
 
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Examples of weekly cultural session topics (TODO: Icons, fix spacings, Insta embeds)</h2>
-									</header>
-									<div class="features">
-										<article>
-											<span class="icon solid fa-utensils"></span>
-											<div class="content">
-												<h3><a href="#" style="border-bottom: 0px;">Japanese food</a></h3>
-												<p>Our club provides avenues to explore Japanese cooking freely. One of our recent discoveries was the idea to add lotus root to Japanese curry.</p>
-											</div>
-										</article>
-										<article>
-											<span class="icon solid fa-paint-brush"></span>
-											<div class="content">
-												<h3><a href="#" style="border-bottom: 0px;">Art and craft</a></h3>
-												<p>Some of our topics included origami, felt doll crafting and caligraphy.</p>
-											</div>
-										</article>
-										<article>
-											<span class="icon solid fa-chess-pawn"></span>
-											<div class="content">
-												<h3><a href="#" style="border-bottom: 0px;">Games</a></h3>
-												<p>Some of our sessions cover traditional games like kendama, hanafuda and shogi. (Though some of us do like mobile games like FGO and Bandori and discuss them too!)</p>
-											</div>
-										</article>
-										<article>
-											<span class="icon solid fa-subway"></span>
-											<div class="content">
-												<h3><a href="#" style="border-bottom: 0px;">Trains</a></h3>
-												<p>Yes, <u>trains</u>. Train station naming conventions, train models, Tokyo's Shinjuku Station, random YouTube music videos to help you memorise station names and pretty much anything else to do with Japan's train networks.</p>
-											</div>
-										</article>
-									</div>
-									<br>
-									<h4>Check out <a href="https://www.instagram.com/sutd.nihongo/" target="_blank" style="border-bottom: dotted 1px;">our Instagram page</a> for some photos of our weekly sessions in action!</h4>
-								</section>
+        <ul>
+            <li> Our club email: <a href={{ email.link }} style="border-bottom: dotted 1px;">{{ email.email }}</a></li>
+            <li> Our Instagram: <a href= {{ instagram.link }} target="_blank" style="border-bottom: dotted 1px;">{{ instagram.id }}</a></li>
+        </ul>
 
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Highlighted past events (TODO: Entire section)</h2>
-									</header>
-									<div class="posts">
-										<article>
-											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
-											<header class="major">
-												<h3>All Things Japan-nice Exhibition</h3>
-												<h4>20-22 October 2019</h4>
-											</header>
-											<p>Insert content here.</p>
-											<ul class="actions">
-												<li><a href="past_events/20191020.html" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
-											<header class="major">
-												<h3>Event</h3>
-												<h4>Date</h4>
-											</header>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
-											<header class="major">
-												<h3>Event</h3>
-												<h4>Date</h4>
-											</header>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
-											<header class="major">
-												<h3>Event</h3>
-												<h4>Date</h4>
-											</header>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
-											<header class="major">
-												<h3>Event</h3>
-												<h4>Date</h4>
-											</header>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic06.jpg" alt="" /></a>
-											<header class="major">
-												<h3>Event</h3>
-												<h4>Date</h4>
-											</header>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-									</div>
-								</section>
+        <p>You can also find these contact info in the sidebar on any page in our website.</p>
 
-								<section id="banner">
-									<div class="content">
-										<header class="major">
-											<h2>Reach out to us!</h2>
-										</header>
-										<p>Looking to join us as a new member? We welcome members from all years, whether you are an undergraduate, postgraduate or alumni.<br><br>
-											Or are you perhaps looking to collaborate with us? Each year we work together with fellow SUTD 5th Rows such as SUTD MVMC and SUTD Gunpla Club to bring about some of our school-wide events.
-											We also collaborate with organisations outside SUTD, such as overseas schools, to host events including student exchanges.<br><br>
-											Feel free to contact us on either:
-										</p>
+    </div>
+    <span class="image object">
+        {% include img_src.html img_name="2021_01_08_titech_exchange_2019.jpg" %}
+    </span>
 
-										<ul>
-											<li> Our club email: <a href="mailto:nihongo@club.sutd.edu.sg" style="border-bottom: dotted 1px;">nihongo@club.sutd.edu.sg</a></li>
-											<li> Our Instagram: <a href="https://www.instagram.com/sutd.nihongo/" target="_blank" style="border-bottom: dotted 1px;">@sutd.nihongo</a></li>
-										</ul>
-
-										<p>You can also find these contact info in the sidebar on any page in our website.</p>
-				
-									</div>
-									<span class="image object">
-										<img src="images/titech_exchange_2019.jpg" alt="" />
-									</span>
-
-								</section>
-
-						</div>
-					</div>
-
-				<!-- Sidebar -->
-					<div id="sidebar">
-						<div class="inner">
-
-							<!-- Menu -->
-								<nav id="menu">
-									<header class="major">
-										<h2>Menu</h2>
-									</header>
-									<ul>
-										<li><a href="index.html">Homepage</a></li>
-										<li><a href="about_us.html">About Us</a></li>
-										<li><a href="past_events.html">Past Events</a></li>
-									</ul>
-								</nav>
-
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Get in touch</h2>
-									</header>
-									<p>Whether it is to join our club activities, organise a collaboration with us or otherwise, do feel free to drop us a message!</p>
-									<ul class="contact">
-										<li class="icon solid fa-envelope"><a href="mailto:nihongo@club.sutd.edu.sg" style="border-bottom: 0px;">nihongo@club.sutd.edu.sg</a></li>
-										<li class="icon solid brands fa-instagram"><a href="https://www.instagram.com/sutd.nihongo/" target="_blank" style="border-bottom: 0px;">@sutd.nihongo</a></li>
-										<li class="icon solid fa-home">Singapore Technology of University and Design<br />
-											8 Somapah Rd, Singapore 487372</li>
-									</ul>
-								</section>
-
-							<!-- Footer -->
-								<footer id="footer">
-									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-								</footer>
-
-						</div>
-					</div>
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
-</html>
+</section>

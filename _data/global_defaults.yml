@@ -1,0 +1,14 @@
+- name: Homepage
+  link: "/"
+- name: About us
+  link: "/about_us.html"
+- name: Past events
+  link: "/past_events.html"
+- name: Email
+  email: "nihongo@club.sutd.edu.sg"
+  link: "mailto:nihongo@club.sutd.edu.sg"
+- name: Instagram
+  id: "@sutd.nihongo"
+  link: "https://www.instagram.com/sutd.nihongo/"
+- name: Logo
+  img: "https://lh3.googleusercontent.com/pw/ACtC-3f0n0Q1LfmhuHoDPmtGydgQoRqFSqjv-9uOT-dYOg7ZzV5nWmZ0CYvlUSkvB2nm7kFsWZ2AlE1ZWczhC5kG8qiJdcnX19CVu1BirPXPwAQhKd-cGLxKyXepvmfJhbDcW4Hs1qbqee0gU0a80BBZwgw=w1621-h549-no"
