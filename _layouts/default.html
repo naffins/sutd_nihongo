@@ -31,6 +31,8 @@
 										{{site.data.global_defaults | inspect}}
 										{% assign logo = site.data.global_defaults | where: "name", "Logo" %}
 										{{ logo | inspect}}
+										{% assign logo = site.data.global_defaults | find: "name", "Logo" %}
+										{{ logo | inspect}}
 										<img src={{ logo.img }} alt="SUTD NihonGo!" style="width: 200px;" />
 									</a>
 								</header>
