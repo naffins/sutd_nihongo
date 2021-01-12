@@ -1,13 +1,16 @@
 {% assign search_id = "/events/" | append: include.event %}
-{% assign article=site.events | find:"id",search_id %}
+{% assign article=site.events | where:"id",search_id %}
+{% assign article = article[0] %}
 
 
 <article>
-    {% if article.cover_image %}
-        {% include img_src.html img_name=article.cover_image %}
-    {% else %}
-        {% include img_src.html img_name="placeholder01.jpg" %}
-    {% endif %}
+    <a href={{ article.url }} class="image">
+        {% if article.cover_image %}
+            {% include img_src.html img_name=article.cover_image %}
+        {% else %}
+            {% include img_src.html img_name="placeholder01.jpg" %}
+        {% endif %}
+    </a>
     <header class="major">
         <h3>{{ article.title }}</h3>
         <h4>{% include date_formatting.html start_day=article.start_day start_month=article.start_month start_year=article.start_year end_day=article.end_day end_month=article.end_month end_year=article.end_year %}</h4>

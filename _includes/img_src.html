@@ -1,2 +1,3 @@
-{% assign img = site.data.images | find: "name", include.img_name %}
+{% assign img = site.data.images | where: "name", include.img_name %}
+{% assign img = img[0] %}
 <img src={{ img.img }}  alt="" />

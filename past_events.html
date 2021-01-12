@@ -18,15 +18,17 @@ title: "Past Events"
         var data = [];
         {% for event in site.events %}
             data.push({"name": "{{ event.title }}",
-                "start_date": ["{{ event.start_year }}","{{ event.start_month }}","{{ event.start_day }}"],
-                "end_date": ["{{ event.end_year }}","{{ event.end_month }}","{{ event.end_day }}"],
+                "start_date": ["{{ event.start_year }}","{{ event.start_month }}".length==1? "0{{ event.start_month }}":"{{ event.start_month }}","{{ event.start_day }}".length==1? "0{{ event.start_day }}":"{{ event.start_day }}"],
+                "end_date": ["{{ event.end_year }}","{{ event.end_month }}".length==1? "0{{ event.end_month }}":"{{ event.end_month }}","{{ event.end_day }}".length==1? "0{{ event.end_day }}":"{{ event.end_day }}"],
                 "description": "{{ event.description }}",
                 "cover_image":
                     {% if event.cover_image %}
-                        {% assign img = site.data.images | find: "name", event.cover_image %}
+                        {% assign img = site.data.images | where: "name", event.cover_image %}
+                        {% assign img = img[0] %}
                         "{{ img.img }}"
                     {% else %}
-                        {% assign img = site.data.images | find: "name", "placeholder01.jpg" %}
+                        {% assign img = site.data.images | where: "name", "placeholder01.jpg" %}
+                        {% assign img = img[0] %}
                         "{{ img.img }}"
                     {% endif %},
                 "link": "{{ event.url }}"
@@ -76,6 +78,9 @@ title: "Past Events"
                 document.getElementById("year_"+currentYear).style = "";
                 document.getElementById("year_"+currentYear).className = "button";
             }
+            else {
+                document.getElementById("months_select").innerHTML = "Select month:";
+            }
             document.getElementById("year_"+year).style = "cursor: auto;";
             document.getElementById("year_"+year).className = "button primary";
             currentYear = year;
@@ -89,8 +94,9 @@ title: "Past Events"
 
         function loadMonths(year){
             for (var i=0;i<dataSorted[year]["months"].length;i++){
-                document.getElementById("months").innerHTML += "<li><a href=\"#\" class=\"button\" id=\"month_" + dataSorted[year]["months"][i]
-                + "\" onclick=\"selectMonth(" + dataSorted[year]["months"][i]  + ")\" style=\"\">" + monthDict[dataSorted[year]["months"][i]] + "</a></li>" ;
+                var month = dataSorted[year]["months"][i].length==1? "0" + dataSorted[year]["months"][i]: dataSorted[year]["months"][i];
+                document.getElementById("months").innerHTML += "<li><a href=\"#\" class=\"button\" id=\"month_" + month
+                + "\" onclick=\"selectMonth(" + month  + ")\" style=\"\">" + monthDict[month] + "</a></li>" ;
             }
         }
 
@@ -160,7 +166,7 @@ title: "Past Events"
 			</ul>
 		</div>
 		<div class="col-6 col-12-small">
-            <h4>Select month:</h4>
+            <h4 id="months_select"></h4>
 			<ul id="months" class="actions stacked">
 			</ul>
 	    </div>

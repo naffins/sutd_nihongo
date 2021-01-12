@@ -1,5 +1,7 @@
-{% assign start_month = site.data.constants.months | find: "number", include.start_month %}
-{% assign end_month = site.data.constants.months | find: "number", include.end_month %}
+{% assign start_month = site.data.constants.months | where: "number", include.start_month %}
+{% assign start_month = start_month[0] %}
+{% assign end_month = site.data.constants.months | where: "number", include.end_month %}
+{% assign end_month = end_month[0] %}
 
 {% if include.start_year==include.end_year %}
     {% if include.start_month==include.end_month %}
