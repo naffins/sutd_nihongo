@@ -1,5 +1,6 @@
 {% assign search_id = "/events/" | append: include.event %}
-{% assign article=site.events | find:"id",search_id %}
+{% assign article=site.events | where:"id",search_id %}
+{% assign article = article[0] %}
 
 
 <article>

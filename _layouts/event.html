@@ -1,10 +1,13 @@
 ---
 layout: default
 ---
-{% assign past_events = site.data.global_defaults | find: "name", "Past events" %}
+{% assign past_events = site.data.global_defaults | where: "name", "Past events" %}
+{% assign past_events = past_events[0] %}
 
-{% assign start_month = site.data.constants.months | find: "number", page.start_month %}
-{% assign end_month = site.data.constants.months | find: "number", page.end_month %}
+{% assign start_month = site.data.constants.months | where: "number", page.start_month %}
+{% assign start_month = start_month[0] %}
+{% assign end_month = site.data.constants.months | where: "number", page.end_month %}
+{% assign end_month = end_month[0] %}
 
 <section>
     <header class="main">

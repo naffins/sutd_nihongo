@@ -1,7 +1,8 @@
 ---
 title: "About us"
 ---
-{% assign image_folder = site.data.global_defaults | find: "name", "Image folder" %}
+{% assign image_folder = site.data.global_defaults | where: "name", "Image folder" %}
+{% assign image_folder = image_folder[0] %}
 
 <!-- Main body-->
 <section>

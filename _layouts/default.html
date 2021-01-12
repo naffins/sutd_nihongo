@@ -11,12 +11,18 @@
 	</head>
 	<body class="is-preload">
 
-		{% assign homepage = site.data.global_defaults | find: "name", "Homepage" %}
-		{% assign about_us = site.data.global_defaults | find: "name", "About us" %}
-		{% assign past_events = site.data.global_defaults | find: "name", "Past events" %}
-		{% assign email = site.data.global_defaults | find: "name", "Email" %}
-		{% assign instagram = site.data.global_defaults | find: "name", "Instagram" %}
-		{% assign logo = site.data.global_defaults | find: "name", "Logo" %}
+		{% assign homepage = site.data.global_defaults | where: "name", "Homepage" %}
+		{% assign homepage = homepage[0] %}
+		{% assign about_us = site.data.global_defaults | where: "name", "About us" %}
+		{% assign about_us = about_us[0] %}
+		{% assign past_events = site.data.global_defaults | where: "name", "Past events" %}
+		{% assign past_events = past_events[0] %}
+		{% assign email = site.data.global_defaults | where: "name", "Email" %}
+		{% assign email = email[0] %}
+		{% assign instagram = site.data.global_defaults | where: "name", "Instagram" %}
+		{% assign instagram = instagram[0] %}
+		{% assign logo = site.data.global_defaults | where: "name", "Logo" %}
+		{% assign logo = logo[0] %}
 
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -27,12 +33,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a href={{ homepage.link }} class="logo_img" style="border-bottom: 0px;">	
-										{{site.data.global_defaults | inspect}}
-										{% assign logo = site.data.global_defaults | where: "name", "Logo" %}
-										{{ logo | inspect}}
-										{% assign logo = site.data.global_defaults | find: "name", "Logo" %}
-										{{ logo | inspect}}
+									<a href={{ homepage.link }} class="logo_img" style="border-bottom: 0px;">
 										<img src={{ logo.img }} alt="SUTD NihonGo!" style="width: 200px;" />
 									</a>
 								</header>
