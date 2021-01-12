@@ -27,7 +27,7 @@ title: "Past Events"
                         {% assign img = img[0] %}
                         "{{ img.img }}"
                     {% else %}
-                        {% assign img = site.data.images | find: "name", "placeholder01.jpg" %}
+                        {% assign img = site.data.images | where: "name", "placeholder01.jpg" %}
                         {% assign img = img[0] %}
                         "{{ img.img }}"
                     {% endif %},
