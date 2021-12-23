@@ -60,6 +60,15 @@
 
 - name: 2021_shogi_game.jpg
   img: "https://raw.githubusercontent.com/naffins/naffins.github.io/senpai_uwu/assets/imgs/Photos_Shogi.jpg"
-  
 - name: 2021_go_game.jpg
   img: "https://raw.githubusercontent.com/naffins/naffins.github.io/senpai_uwu/assets/imgs/Photos_GO.jpg"
+- name: 2021_omamori_cover.jpg
+  img: "https://raw.githubusercontent.com/naffins/naffins.github.io/senpai_uwu/assets/imgs/omamori_step_one.jpg"
+- name: 2021_omamori_step_one.jpg
+  img: "https://raw.githubusercontent.com/naffins/naffins.github.io/senpai_uwu/assets/imgs/omamori_step_one.jpg"
+- name: 2021_omamori_step_two.jpg
+  img: "https://raw.githubusercontent.com/naffins/naffins.github.io/senpai_uwu/assets/imgs/omamori_step_two.jpg"
+- name: 2021_omamori_step_three.jpg
+  img: "https://raw.githubusercontent.com/naffins/naffins.github.io/senpai_uwu/assets/imgs/omamori_step_three.jpg"
+- name: 2021_omamori_zoom_video.jpg
+  img: "https://raw.githubusercontent.com/naffins/naffins.github.io/senpai_uwu/assets/imgs/omamori_20_12.PNG"
