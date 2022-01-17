@@ -42,14 +42,52 @@ to update packages, then push the Gemfile. In most cases this should fix resolve
 
 ALWAYS TEST UPDATES BEFORE YOU PUSH AND DEPLOY TO THE SENPAI_UWU BRANCH ON GITHUB.
 
-## Low-level explanation of repo structure (for those who want to get their hands dirty)
+### Adding images
+
+Place the desired image into /imgs, ensuring that the image is not within any nested folder.
+
+### Adding pages for past events
+
+See /_events/20140319.html for an example.
+
+Create an HTML file with the name "YYYYMMDD.html" in the /_events folder.
+
+At the top of the file, insert front matter as shown below:
+
+    ---
+    id: "[YYYYMMDD]"
+    title: "M[title of specific event page]"
+
+    start_day: <D>D
+    start_month: <M>M
+    start_year: YYYY
+    end_day: <D>D
+    end_month: <M>M
+    end_year: YYYY
+
+    description: "[summary of event to be shown on past events page, and homepage if featured there]"
+    cover_image: "[filename of photo to be shown on past events page, and homepage if featured there]"
+    ---
+
+Now you can add content below the front matter as if it were a normal HTML body, using paragraph and line break tags.
+
+In some cases, you may want to use images. There are 2 ways to include images:
+
+- As a single image - use
+
+    {% include img_flex.html img_name="[image filename]" img_pos="fit" %}
+
+- As a gallery - use
+
+    {% include img_grid.html img_name_list="[image filename 1]&lt;, [image 2 filename]&lt;, [image 3 filename], ...>>" %}
+
+## Low-level explanation of repo structure
 
 ### _data
 
 Contains constants for site operation.
 - constants.yml contain constants to map between month number and month name.
 - global_defaults.yml contain site-wide defaults such as logo and contact info.
-- images.yml contain links to site images (other than logo). To be replaced with in-repo directory URL.
 
 ### _events
 
@@ -61,5 +99,33 @@ Contains template Liquid statements for quickly replicating code.
 - date_formatting.html:
   For formatting a date period
   
-  Arguments: start_
-- test
+  Arguments: start_day, start_month, start_year, end_day, end_month, end_year
+- event_highlight.html:
+  For displaying event highlights on the homepage
+  
+  Arguments: event - name of HTML file of event eg "20140329"
+- img_flex.html:
+  For showing images as a flex object (eg. to occupy the entire width of a page)
+
+  Arguments: img_name, img_pos
+- img_grid.html:
+  For showing multiple images in a page as a gallery
+
+  Arguments: img_name_list - string listing image names as ", " separated list
+- img_src.html:
+  For showing a single image
+  Arguments: img_name
+
+### _layouts
+
+Contains default layouts for pages in the website.
+- default.html: default layout for all pages in the website
+- event.html: default layout for past events pages
+
+### _site
+
+Static site outputs (usually only apparent in local builds).
+
+### imgs
+
+Folder containing website images. To be optimized by ImgBot on GitHub.

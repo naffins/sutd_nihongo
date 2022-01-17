@@ -1,3 +1,3 @@
-{% assign img = site.data.images | where: "name", include.img_name %}
+{% assign img = site.static_files | where: "file.name", include.img_name %}
 {% assign img = img[0] %}
-<img src={{ img.img }}  alt="" />
+<img src={{ img.path }} alt="" />
