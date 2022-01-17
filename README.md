@@ -44,7 +44,7 @@ ALWAYS TEST UPDATES BEFORE YOU PUSH AND DEPLOY TO THE SENPAI_UWU BRANCH ON GITHU
 
 ### Adding images
 
-Place the desired image into /imgs, ensuring that the image is not within any nested folder.
+Place the desired image into /assets/imgs, ensuring that the image is not within any nested folder.
 
 Please prepend "YYYY_MM_DD_" to image names according to when they were added, to avoid naming duplicates.
 
