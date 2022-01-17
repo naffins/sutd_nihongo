@@ -46,6 +46,8 @@ ALWAYS TEST UPDATES BEFORE YOU PUSH AND DEPLOY TO THE SENPAI_UWU BRANCH ON GITHU
 
 Place the desired image into /imgs, ensuring that the image is not within any nested folder.
 
+Please prepend "YYYY_MM_DD_" to image names according to when they were added, to avoid naming duplicates.
+
 ### Adding pages for past events
 
 See /_events/20140319.html for an example.
