@@ -63,7 +63,7 @@ title: "Past Events"
 
         document.addEventListener('DOMContentLoaded', (event) => {
             for (var i=0;i<years.length;i++){
-                document.getElementById("years").innerHTML += "<li><a href=\"#\" class=\"button\" id=\"year_" + years[i]
+                document.getElementById("years").innerHTML += "<li><a class=\"button\" id=\"year_" + years[i]
                 + "\" onclick=\"selectYear(" + years[i]  + ")\" style=\"\">" + years[i] + "</a></li>" ;
             }
         });
@@ -95,7 +95,7 @@ title: "Past Events"
         function loadMonths(year){
             for (var i=0;i<dataSorted[year]["months"].length;i++){
                 var month = dataSorted[year]["months"][i].length==1? "0" + dataSorted[year]["months"][i]: dataSorted[year]["months"][i];
-                document.getElementById("months").innerHTML += "<li><a href=\"#\" class=\"button\" id=\"month_" + month
+                document.getElementById("months").innerHTML += "<li><a class=\"button\" id=\"month_" + month
                 + "\" onclick=\"selectMonth(" + month  + ")\" style=\"\">" + monthDict[month] + "</a></li>" ;
             }
         }

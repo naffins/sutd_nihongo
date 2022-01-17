@@ -42,3 +42,24 @@ to update packages, then push the Gemfile. In most cases this should fix resolve
 
 ALWAYS TEST UPDATES BEFORE YOU PUSH AND DEPLOY TO THE SENPAI_UWU BRANCH ON GITHUB.
 
+## Low-level explanation of repo structure (for those who want to get their hands dirty)
+
+### _data
+
+Contains constants for site operation.
+- constants.yml contain constants to map between month number and month name.
+- global_defaults.yml contain site-wide defaults such as logo and contact info.
+- images.yml contain links to site images (other than logo). To be replaced with in-repo directory URL.
+
+### _events
+
+Contains contents of pages to be listed under Past Events section. Events are sorted and categorized in the Past Events page through JavaScript (see approximately lines 12-156). For this grouping/sorting, the pages' front matter is used.
+
+### _includes
+
+Contains template Liquid statements for quickly replicating code.
+- date_formatting.html:
+  For formatting a date period
+  
+  Arguments: start_
+- test
