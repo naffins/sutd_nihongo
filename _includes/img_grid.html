@@ -3,7 +3,7 @@
 
 <span id="img_grid_display" class="image fit">
     {% assign img_temp=img_array[0] %}
-    {% include img_src.html img_name=img_temp %}
+    {% include img_src.html img_name=img_temp root_dir=include.root_dir%}
 </span>
 
 <div class="box alt">
@@ -32,7 +32,7 @@
                     {% endif %} 
                     onclick="switchGridId({{ grid_id }});";
                 >             
-                    {% include img_src.html img_name=img_name %}
+                    {% include img_src.html img_name=img_name root_dir=include.root_dir %}
                 </span>
             </div>
             {% assign grid_id = grid_id | plus: 1 %}

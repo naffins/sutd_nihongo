@@ -1,5 +1,10 @@
 ---
 ---
+{% assign parent_dir_local = "" %}
+{% if page.root_dir %}
+	{% assign parent_dir_local = page.root_dir %}
+{% endif %}
+
 <!DOCTYPE HTML>
 
 <html>
@@ -7,16 +12,19 @@
 		<title>SUTD NihonGo! - {{ page.title }}</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="{{ parent_dir_local }}assets/css/main.css" />
 	</head>
 	<body class="is-preload">
 
 		{% assign homepage = site.data.global_defaults | where: "name", "Homepage" %}
 		{% assign homepage = homepage[0] %}
+		{% assign homepage = parent_dir_local | append: homepage.link %}
 		{% assign about_us = site.data.global_defaults | where: "name", "About us" %}
 		{% assign about_us = about_us[0] %}
+		{% assign about_us = parent_dir_local | append: about_us.link %}
 		{% assign past_events = site.data.global_defaults | where: "name", "Past events" %}
 		{% assign past_events = past_events[0] %}
+		{% assign past_events = parent_dir_local | append: past_events.link %}
 		{% assign email = site.data.global_defaults | where: "name", "Email" %}
 		{% assign email = email[0] %}
 		{% assign instagram = site.data.global_defaults | where: "name", "Instagram" %}
@@ -33,7 +41,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a href={{ homepage.link }} class="logo_img" style="border-bottom: 0px;">
+									<a href={{ homepage }} class="logo_img" style="border-bottom: 0px;">
 										<img src={{ logo.img }} alt="SUTD NihonGo!" style="width: 200px;" />
 									</a>
 								</header>
@@ -54,9 +62,9 @@
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href={{ homepage.link }}>Homepage</a></li>
-										<li><a href={{ about_us.link }}>About Us</a></li>
-										<li><a href={{ past_events.link }}>Past Events</a></li>
+										<li><a href={{ homepage }}>Homepage</a></li>
+										<li><a href={{ about_us }}>About Us</a></li>
+										<li><a href={{ past_events }}>Past Events</a></li>
 									</ul>
 								</nav>
 
@@ -79,11 +87,11 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="{{ parent_dir_local }}assets/js/jquery.min.js"></script>
+			<script src="{{ parent_dir_local }}assets/js/browser.min.js"></script>
+			<script src="{{ parent_dir_local }}assets/js/breakpoints.min.js"></script>
+			<script src="{{ parent_dir_local }}assets/js/util.js"></script>
+			<script src="{{ parent_dir_local }}assets/js/main.js"></script>
 
 	</body>
 	

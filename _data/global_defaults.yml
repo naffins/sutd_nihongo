@@ -1,9 +1,9 @@
 - name: Homepage
-  link: "/"
+  link: "."
 - name: About us
-  link: "/about_us.html"
+  link: "about_us.html"
 - name: Past events
-  link: "/past_events.html"
+  link: "past_events.html"
 - name: Email
   email: "nihongo@club.sutd.edu.sg"
   link: "mailto:nihongo@club.sutd.edu.sg"

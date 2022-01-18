@@ -20,6 +20,6 @@ layout: default
     </header>
     {{ content }}
     <ul class="actions">
-        <li><a href={{ past_events.link }} class="button big">Back to List of Past Events</a></li>
+        <li><a href={{ page.root_dir | append: past_events.link }} class="button big">Back to List of Past Events</a></li>
     </ul>
 </section>
