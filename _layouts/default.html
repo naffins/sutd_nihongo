@@ -29,8 +29,9 @@
 		{% assign email = email[0] %}
 		{% assign instagram = site.data.global_defaults | where: "name", "Instagram" %}
 		{% assign instagram = instagram[0] %}
-		{% assign logo = site.data.global_defaults | where: "name", "Logo" %}
-		{% assign logo = logo[0] %}
+		{% assign logo = site.static_files | where: "name", "logo.png" %}
+		{% assign logo = logo[0].path | slice: 1, logo[0].path.size %}
+		{% assign logo = parent_dir_local | append: logo %}
 
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -42,7 +43,7 @@
 							<!-- Header -->
 								<header id="header">
 									<a href={{ homepage }} class="logo_img" style="border-bottom: 0px;">
-										<img src={{ logo.img }} alt="SUTD NihonGo!" style="width: 200px;" />
+										<img src="{{ logo }}" alt="SUTD NihonGo!" style="width: 200px;" />
 									</a>
 								</header>
 
