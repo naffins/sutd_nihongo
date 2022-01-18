@@ -25,13 +25,13 @@ title: "Past Events"
                     {% if event.cover_image %}
                         {% assign img = site.static_files | where: "name", event.cover_image %}
                         {% assign img = img[0] %}
-                        "{{ img.path }}"
+                        "{{ img.path | slice: 1, img.path.size }}"
                     {% else %}
                         {% assign img = site.static_files | where: "name", "placeholder01.jpg" %}
                         {% assign img = img[0] %}
-                        "{{ img.path }}"
+                        "{{ img.path | slice: 1, img.path.size }}"
                     {% endif %},
-                "link": "{{ event.url }}"
+                "link": "{{ event.path | slice: 1, event.path.size }}"
             });
         {% endfor %}
         var years = {};
