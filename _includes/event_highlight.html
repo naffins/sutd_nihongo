@@ -17,6 +17,6 @@
     </header>
     <p>{{ article.description }}</p>
     <ul class="actions">
-        <li><a href={{ article.url }} class="button">More</a></li>
+        <li><a href={{ article.path | slice: 1, article.path.size }} class="button">More</a></li>
     </ul>
 </article>
