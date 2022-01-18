@@ -4,7 +4,7 @@
 
 
 <article>
-    <a href={{ article.url }} class="image">
+    <a href={{ article.path | slice: 1, article.path.size }} class="image">
         {% if article.cover_image %}
             {% include img_src.html img_name=article.cover_image %}
         {% else %}
