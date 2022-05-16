@@ -1,0 +1,20 @@
+---
+id: "20220211"
+title: "Valentine's Day Event"
+root_dir: "../"
+
+start_day: 11
+start_month: 2
+start_year: 2022
+end_day: 11
+end_month: 2
+end_year: 2022
+
+description: "Come and visit the NiHonGo! Valentine's Day booth! Perfect for lovely couples who wants to synchronize together in a game of Taiko no Tatsujin and take a romantic photo in traditional Japanese attire!."
+cover_image: 2022_02_03_brushpic.jpg
+---
+{% assign img_name_list="2022_02_03_brushpic.jpg, 2022_02_03_brushpic2.jpg, 2022_02_03_brushpic3.jpg, " |
+append: "2022_02_03_brushpic4.jpg, 2022_02_03_brushpic5.jpg" %}
+{% include img_grid.html img_name_list=img_name_list root_dir=page.root_dir %}
+
+<p>Insert content text here.</p>
